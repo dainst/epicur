@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * @file plugins/oaiMetadataFormat/epicur/locale/de_DE/locale.xml
+  *
+  * Author: Marco Tullney, Center for Digital Systems (CeDiS), Freie Universität Berlin
+  * Last update: September 26, 2012
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the de_DE (Deutsch (Deutschland)) locale.
+  *
+  -->
+ 
+<locale name="de_DE" full_name="Deutsch (Deutschland)">
+	<message key="plugins.OAIMetadataFormats.epicur.displayName">EPICUR-URN-Metadaten-Format</message>
+	<message key="plugins.OAIMetadataFormats.epicur.description">Strukturiert URN-Metadaten auf eine zum EPICUR-Format kompatible Weise.</message>
+</locale>

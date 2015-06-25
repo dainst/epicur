@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE locale SYSTEM "../../../../../lib/pkp/dtd/locale.dtd">
+
+<!--
+  * @file plugins/oaiMetadataFormat/epicur/locale/en_US/locale.xml
+  *
+  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
+  * Last update: September 26, 2012
+  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
+  *
+  * Localization strings for the en_US (U.S. English) locale.
+  -->
+ 
+<locale name="en_US" full_name="U.S. English">
+	<message key="plugins.OAIMetadataFormats.epicur.displayName">Epicur URN Metadata Format</message>
+	<message key="plugins.OAIMetadataFormats.epicur.description">Structures URN metadata in a way that is consistent with the Epicur format.</message>
+</locale>
