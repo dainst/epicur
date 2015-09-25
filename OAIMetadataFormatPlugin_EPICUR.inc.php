@@ -1,15 +1,14 @@
 <?php
 
 /**
- * @file plugins/oaiMetadataFormats/epicur/OAIMetadataFormatPlugin_EPICUR.inc.php
+ * @file OAIMetadataFormatPlugin_EPICUR.inc.php
  *
  * Author: Božana Bokan, Center for Digital Systems (CeDiS), Freie Universität Berlin
- * Last update: September 26, 2012
+ * Last update: September 25, 2015
  * Distributed under the GNU GPL v2. For full terms see the file docs/COPYING.
  *
+ * @package plugins.oaiMetadataFormats.epicur
  * @class OAIMetadataFormatPlugin_EPICUR
- * @ingroup oai_format
- * @see OAI
  *
  * @brief EPICUR metadata format plugin for OAI.
  */
