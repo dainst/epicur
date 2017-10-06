@@ -45,4 +45,4 @@ Version History
 1.1 - Empty Metadata and Type "frontpage"
 1.2 - Back to the first solution for the empty metadata
 1.3 - References
-1.4 - Use the build-in URN Plugin (as opposed to the specialised DNB URN Plugin) to support new DNB Policy; aslo suppoert OJS
+1.4 - Use the build-in URN Plugin (as opposed to the specialised DNB URN Plugin) to support new DNB Policy; also support OJS3
