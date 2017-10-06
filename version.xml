@@ -13,6 +13,6 @@
 <version>
 	<application>epicur</application>
 	<type>plugins.oaiMetadataFormats</type>
-	<release>1.2.0.0</release>
-	<date>2015-06-18</date>
+	<release>1.4.0.0</release>
+	<date>2017-10-06</date>
 </version>
