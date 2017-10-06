@@ -38,16 +38,16 @@ class OAIMetadataFormatPlugin_EPICUR extends OAIMetadataFormatPlugin {
 		return 'OAIMetadataFormat_EPICUR';
 	}
 
-	function getMetadataPrefix() {
+	static function getMetadataPrefix() {
 		return 'epicur';
 	}
 
-	function getSchema() {
+	static function getSchema() {
 		//return 'http://nbn-resolving.de/urn/resolver.pl?urn=urn:nbn:de:1111-2004033116';
 		return 'http://www.persistent-identifier.de/xepicur/version1.0/xepicur.xsd';
 	}
 
-	function getNamespace() {
+	static function getNamespace() {
 		return 'urn:nbn:de:1111-2004033116';
 	}
 }
