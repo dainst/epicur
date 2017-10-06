@@ -26,13 +26,13 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 
 		$identifiers = array();
 		$pubIdPlugins = PluginRegistry::loadCategory('pubIds', true, $journal->getId());
-		$urnDNBPlugin = $pubIdPlugins['URNDNBPubIdPlugin'];
-		if ($urnDNBPlugin) {
-			$urnScheme = $urnDNBPlugin->getSetting($journal->getId(), 'urnDNBNamespace');
+		urnPlugin = $pubIdPlugins['URNPubIdPlugin'];
+		if (urnPlugin) {
+			$urnScheme = urnPlugin->getSetting($journal->getId(), 'urnNamespace');
 
 			$galleysIdentifiers = array();
 			foreach ($galleys as $galley) {
-				$galleyURN = $galley->getPubId('other::urnDNB');
+				$galleyURN = $galley->getPubId('other::urn');
 				if ($galleyURN && $galley->isPdfGalley()) {
 					$articleLanguages = array_map('trim', explode(';', $article->getLanguage()));
 					$galleyLocale = $galley->getLocale();
