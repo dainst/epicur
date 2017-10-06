@@ -26,9 +26,9 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 
 		$identifiers = array();
 		$pubIdPlugins = PluginRegistry::loadCategory('pubIds', true, $journal->getId());
-		urnPlugin = $pubIdPlugins['URNPubIdPlugin'];
-		if (urnPlugin) {
-			$urnScheme = urnPlugin->getSetting($journal->getId(), 'urnNamespace');
+		$urnPlugin = $pubIdPlugins['URNPubIdPlugin'];
+		if ($urnPlugin) {
+			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'urnNamespace');
 
 			$galleysIdentifiers = array();
 			foreach ($galleys as $galley) {
