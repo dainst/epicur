@@ -31,20 +31,19 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'urnNamespace');
 
 			$galleysIdentifiers = array();
+			// filter PDF and EPUB full text galleys -- DNB concerns only PDF and EPUB formats
+			$filteredGalleys = array_filter($galleys, array($this, 'filterGalleys'));
+			$galleys = $filteredGalleys;
 			foreach ($galleys as $galley) {
 				$galleyURN = $galley->getStoredPubId('other::urn');
-				if ($galleyURN && $galley->isPdfGalley()) {
-					$articleLanguages = array_map('trim', explode(';', $article->getLanguage()));
-					$galleyLocale = $galley->getLocale();
-					if (AppLocale::getIso1FromLocale($galleyLocale) == $articleLanguages[0]) {
-						$galleyViewURL = Request::url($journal->getPath(), 'article', 'view', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
-						$galleyDownloadURL = Request::url($journal->getPath(), 'article', 'download', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
-						$identifiers[] = array(
-							'urn' => $galleyURN,
-							'viewURL' => $galleyViewURL,
-							'downloadURL' => $galleyDownloadURL
-						);
-					}
+				if ($galleyURN) {
+					$galleyViewURL = Request::url($journal->getPath(), 'article', 'view', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
+					$galleyDownloadURL = Request::url($journal->getPath(), 'article', 'download', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
+					$identifiers[] = array(
+						'urn' => $galleyURN,
+						'viewURL' => $galleyViewURL,
+						'downloadURL' => $galleyDownloadURL
+					);
 				}
 			}
 		}
@@ -89,6 +88,25 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 		return $response;
 	}
 
+	/**
+	 * Check if a galley is a full text as well as PDF or an EPUB file.
+	 * @param $galley ArticleGalley
+	 * @return boolean
+	 */
+	function filterGalleys($galley) {
+		// check if it is a full text
+		$genreDao = DAORegistry::getDAO('GenreDAO');
+		$galleyFile = $galley->getFile();
+		if ($galleyFile) {
+			$genre = $genreDao->getById($galleyFile->getGenreId());
+			// if it is not a full text, continue
+			if ($genre->getCategory() != 1 || $genre->getSupplementary() || $genre->getDependent()) {
+				return false;
+			}
+			return $galley->isPdfGalley() ||  $galley->getFileType() == 'application/epub+zip';
+		}
+		return false;
+	}
 }
 
 ?>
