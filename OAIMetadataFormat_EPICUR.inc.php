@@ -28,7 +28,7 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 		$pubIdPlugins = PluginRegistry::loadCategory('pubIds', true, $journal->getId());
 		$urnPlugin = $pubIdPlugins['urnpubidplugin'];
 		if ($urnPlugin) {
-			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'urnNamespace');
+			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'namespace');
 
 			$galleysIdentifiers = array();
 			// filter PDF and EPUB full text galleys -- DNB concerns only PDF and EPUB formats
