@@ -28,7 +28,7 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 		$pubIdPlugins = PluginRegistry::loadCategory('pubIds', true, $journal->getId());
 		$urnPlugin = $pubIdPlugins['URNPubIdPlugin'];
 		if ($urnPlugin) {
-			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'urnNamespace');
+			$urnScheme = $urnPlugin->getSetting($journal->getId(), 'namespace');
 
 			$galleysIdentifiers = array();
 			foreach ($galleys as $galley) {
@@ -36,15 +36,14 @@ class OAIMetadataFormat_EPICUR extends OAIMetadataFormat {
 				if ($galleyURN && $galley->isPdfGalley()) {
 					$articleLanguages = array_map('trim', explode(';', $article->getLanguage()));
 					$galleyLocale = $galley->getLocale();
-					if (AppLocale::getIso1FromLocale($galleyLocale) == $articleLanguages[0]) {
-						$galleyViewURL = Request::url($journal->getPath(), 'article', 'view', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
-						$galleyDownloadURL = Request::url($journal->getPath(), 'article', 'download', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
-						$identifiers[] = array(
-							'urn' => $galleyURN,
-							'viewURL' => $galleyViewURL,
-							'downloadURL' => $galleyDownloadURL
-						);
-					}
+					$galleyViewURL = Request::url($journal->getPath(), 'article', 'view', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
+					$galleyDownloadURL = Request::url($journal->getPath(), 'article', 'download', array($article->getBestArticleId($journal), $galley->getBestGalleyId($journal)));
+					$identifiers[] = array(
+						'urn' => $galleyURN,
+						'viewURL' => $galleyViewURL,
+						'downloadURL' => $galleyDownloadURL
+					);
+
 				}
 			}
 		}
